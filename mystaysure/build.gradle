@@ -1,0 +1,31 @@
+buildscript {
+	repositories {
+		mavenCentral()
+		maven { url "https://repo.spring.io/plugins-release" }
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.5.RELEASE")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: "spring-boot"
+apply plugin: "war"
+
+repositories {
+	mavenCentral()
+	maven { url "https://repo.spring.io/libs-release" }
+}
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
+	compile("org.springframework.security.oauth:spring-security-oauth2:2.0.7.RELEASE")
+	compile 'javax.servlet:jstl:1.2'
+	
+    providedCompile'org.apache.tomcat.embed:tomcat-embed-jasper:8.0.24'
+    providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
+    
+    providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
+}
+
